@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #header-img {
+            width: 80%;
+        }
+
+        #nav-bar {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #name,
+        #email,
+        #age {
+            display: block;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                background-color: lightblue;
+            }
+        }
+    </style>
+
+    <script>
+        function areInputsOK() {
+            const inputEmail = document.getElementById('email');
+            const regexEmail =
+                /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g;
+            const resultEmail = regexEmail.test(inputEmail.value);
+
+            if (!resultEmail) {
+                inputEmail.value = '';
+                return alert('Wrong email!');
+            }
+
+            const form = document.getElementById('form');
+            form.action = 'https://www.freecodecamp.com/email-submit';
+        }
+    </script>
+
+    <header id="header">landing page
+        <img src="http://www.osii.com/images/cat-headers/banner-solutions-initiatives-microgrid.jpg" alt="" id="header-namemg">
+        <nav id="nav-bar">
+            <a href="#name" class="nav-link">One</a>
+            <a href="#email" class="nav-link">Two</a>
+            <a href="#age" class="nav-link">Three</a>
+        </nav>
+        <video id="video" width="400px" height="400px" controls="controls" preload="none" autoplay>
+            <source src="Video1.mp4" type="video/mp4">
+        </video>
+    </header>
+    <form id="form">
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="text" id="email" placeholder="Enter your email">
+        <input type="text" id="age" placeholder="Enter your age">
+        <input onclick="areInputsOK()" id="submit" type="submit">
+    </form>
+</body>
+
+</html>
